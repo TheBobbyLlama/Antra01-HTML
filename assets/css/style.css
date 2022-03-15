@@ -1,0 +1,141 @@
+body {
+	align-items: center;
+	display: flex;
+	font-family: Arial, Helvetica, sans-serif;
+	justify-content: center;
+	margin: 10px 100px;
+}
+
+a:link {
+	color: #4991cd;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #4890cd;
+}
+
+button {
+	border: none;
+	border-radius: 6px;
+	color: white;
+	cursor: pointer;
+	font-size: 20px;
+	height: 43px;
+	min-height: 43px; /* If I only use height, the buttons get squished once the flex direction changes? */
+}
+
+#signup {
+	border: solid 1px silver;
+	max-width: 800px;
+	padding: 20px 40px 30px 30px;
+}
+
+#signup h1 {
+	margin: 0 0 10px 0;
+	padding: 0;
+	text-align: center;
+	width: 100%;
+}
+
+#signup .layout > div {
+	display: flex;
+	margin: 0 10px;
+	width: 100%;
+}
+
+#signup .layout > div:not(:last-child) {
+	margin-bottom: 10px;
+}
+
+#signup .layout > div > * {
+	flex-basis: 100%;
+}
+
+#signup .layout > div > * {
+	margin: 0 10px;
+}
+
+#signup .layout input {
+	border: solid 1px #d0d0d0;
+	font-size: 18px;
+	border-radius: 4px;
+	padding: 10px;
+}
+
+#signup .agreement {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+	/* Misalignment of checkbox and text can be fixed by adding more margins here. */
+}
+
+#signup .agreement > *:first-child {
+	display: flex;
+	min-width: 160px;
+}
+
+#signup label {
+	font-weight: bold;
+	margin-left: 4px;
+	white-space: nowrap;
+}
+
+.register {
+	background-color: #4890cd;
+}
+
+span.register {
+	align-items: center;
+	border-radius: 3px;
+	color: white;
+	display: inline-flex;
+	font-size: 12px;
+	padding: 3px 8px;
+}
+
+.signin {
+	background-color: #62bc62;
+}
+
+@media screen and (max-width: 768px) {
+	body {
+		margin: 10px;
+	}
+
+	#signup {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 575px) {
+	#signup {
+		padding: 20px;
+	}
+
+	#signup .layout > div {
+		flex-direction: column;
+		margin: 0;
+	}
+
+	#signup .layout > div > :not(:last-child) {
+		margin-bottom: 10px;
+	}
+
+	#signup .agreement {
+		flex-direction: column-reverse;
+		margin: 20px 10px 10px 10px;
+	}
+
+	#signup .agreement > * {
+		min-width: auto;
+		width: 100%;
+	}
+
+	#signup .agreement > *:first-child {
+		display: flex;
+		justify-content: center;
+		margin-top: 10px;
+	}
+}
