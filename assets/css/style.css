@@ -1,9 +1,14 @@
-body {
-	align-items: center;
-	display: flex;
-	font-family: Arial, Helvetica, sans-serif;
-	justify-content: center;
-	margin: 10px 100px;
+:root {
+	--color-register: #4890cd;
+	--color-register-hover: #58a0dd;
+	--color-signin: #62bc62;
+	--color-signin-hover: #72cc72;
+}
+
+*, *::before, *::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 a:link {
@@ -15,84 +20,111 @@ a:visited {
 	color: #4890cd;
 }
 
-button {
+#signup {
+	max-width: 800px;
+}
+
+.btn--simple {
 	border: none;
 	border-radius: 6px;
 	color: white;
 	cursor: pointer;
-	font-size: 20px;
+	font-size: 1.25em;
 	height: 43px;
 	min-height: 43px; /* If I only use height, the buttons get squished once the flex direction changes? */
+	transition: 0.25s background-color;
 }
 
-#signup {
+.form--container {
+	align-items: center;
+	display: flex;
+	font-family: Arial, Helvetica, sans-serif;
+	justify-content: center;
+	margin: 10px 100px;
+}
+
+.form--simple {
 	border: solid 1px silver;
-	max-width: 800px;
-	padding: 20px 40px 30px 30px;
+	display: flex;
+	flex-direction: column;
+	padding: 20px 20px 30px 20px;	
 }
 
-#signup h1 {
-	margin: 0 0 10px 0;
+.form--simple h1 {
+	margin: 0;
 	padding: 0;
 	text-align: center;
 	width: 100%;
 }
 
-#signup input {
+.form--simple input {
 	border: solid 1px #d0d0d0;
-	font-size: 18px;
+	font-size: 1.125em;
 	border-radius: 4px;
 	padding: 10px;
 }
 
-#signup > div {
-	display: flex;
-	margin: 0 10px;
-	width: 100%;
+.form--simple input:focus {
+	border-color: var(--color-register-hover);
+	box-shadow: 0px 0px 5px var(--color-register-hover);
 }
 
-#signup > div:not(.agreement):not(:last-child) {
-	margin-bottom: 10px;
-}
-
-#signup > div:not(.agreement) > * {
-	flex-basis: 100%;
-	margin: 0 10px;
-}
-
-#signup .agreement {
-	align-items: center;
-	justify-content: space-between;
-	margin: 20px 0 0 0;
-	/* Misalignment of checkbox and text can be fixed by adding more margins here. */
-}
-
-#signup .agreement > *:first-child {
-	display: flex;
-	min-width: 160px;
-}
-
-#signup label {
+.form--simple label {
+	cursor: pointer;
 	font-weight: bold;
 	margin-left: 4px;
 	white-space: nowrap;
 }
 
-.register {
-	background-color: #4890cd;
+.form--row {
+	display: flex;
+	margin: 0 10px;
+	flex-basis: 100%;
 }
 
-span.register {
+.form--row > * {
+	flex-basis: 100%;
+	margin: 10px 10px;
+}
+
+.form--simple .form__agreement {
 	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin: 20px 0 0 0;
+	/* Misalignment of checkbox and text can be fixed by adding more margins here. */
+}
+
+.form--simple .form__agreement > *:first-child {
+	align-items: center;
+	display: flex;
+	min-width: 160px;
+}
+
+.btn--register {
+	background-color: var(--color-register);
+}
+
+.btn--register:hover {
+	background-color: var(--color-register-hover);
+}
+
+.span--register {
+	align-items: center;
+	background-color: var(--color-register);
 	border-radius: 3px;
 	color: white;
 	display: inline-flex;
-	font-size: 12px;
+	font-size: 0.75em;
 	padding: 3px 8px;
 }
 
-.signin {
-	background-color: #62bc62;
+.btn--signin {
+	background-color: var(--color-signin);
+}
+
+.btn--signin:hover {
+	background-color: var(--color-signin-hover);
 }
 
 @media screen and (max-width: 768px) {
@@ -102,37 +134,32 @@ span.register {
 }
 
 @media screen and (max-width: 768px) {
-	body {
+	.form--container {
 		margin: 10px;
 	}
 }
 
-@media screen and (max-width: 575px) {
-	#signup {
+@media screen and (max-width: 600px) {
+	.form--simple {
 		padding: 20px;
 	}
 
-	#signup > div:not(.agreement) {
+	.form--row {
 		flex-direction: column;
 		margin: 0;
 	}
 
-	#signup > div:not(.agreement) > :not(:last-child) {
+	.form--row > :not(:last-child) {
 		margin-bottom: 10px;
 	}
 
-	#signup .agreement {
+	.form--simple .form__agreement {
+		align-items: stretch;
 		flex-direction: column-reverse;
-		margin: 20px 10px 10px 10px;
+		margin: 10px;
 	}
 
-	#signup .agreement > * {
-		min-width: auto;
-		width: 100%;
-	}
-
-	#signup .agreement > *:first-child {
-		display: flex;
+	.form--simple .form__agreement > * {
 		justify-content: center;
 		margin-top: 10px;
 	}
